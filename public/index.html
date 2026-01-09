@@ -32,6 +32,7 @@
       background-size:cover;
       background-position:center;
       position:relative;
+      min-height:100vh;
     }
 
     body::before{
@@ -129,7 +130,7 @@
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding-top:80px;
+      padding-top:120px; /* avoid overlap with fixed header */
     }
 
     .hero h1{
@@ -184,6 +185,7 @@
       color:#666;
     }
 
+    /* Tablet */
     @media(max-width:992px){
       .menu-toggle{display:block;}
       .nav-menu{
@@ -201,9 +203,19 @@
       .nav-menu.active{right:0;}
     }
 
+    /* Mobile */
     @media(max-width:768px){
       .hero h1{font-size:3.5rem;}
       .btn{width:90%; max-width:340px;}
+    }
+
+    /* Extra small phones */
+    @media(max-width:480px){
+      .hero h1{font-size:2.5rem; letter-spacing:-1px;}
+      .hero p{font-size:1rem; padding:0 10px;}
+      .btn{padding:14px 28px; font-size:0.9rem;}
+      .logo{font-size:1.5rem;}
+      .nav-menu{gap:20px;}
     }
   </style>
 </head>
@@ -246,33 +258,31 @@
   <!-- Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-  <!-- Backend Connection -->
+  <!-- Backend Connection + UI Scripts -->
   <script>
-  fetch("/api/message")
-    .then(res => res.json())
-    .then(data => {
-      document.getElementById("backend-message").innerText = data.message;
-    })
-    .catch(() => {
-      document.getElementById("backend-message").innerText = "Backend not connected";
-    });
-</script>
+    fetch("/api/message")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("backend-message").innerText = data.message;
+      })
+      .catch(() => {
+        document.getElementById("backend-message").innerText = "Backend not connected";
+      });
 
-
-    particlesJS("particles-js",{
-      particles:{
-        number:{value:80},
-        color:{value:["#a8b5a2","#ffe5d9"]},
-        size:{value:4},
-        move:{speed:0.7}
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 80 },
+        color: { value: ["#a8b5a2", "#ffe5d9"] },
+        size: { value: 4 },
+        move: { speed: 0.7 }
       }
     });
 
-    window.addEventListener("scroll",()=>{
-      document.getElementById("header").classList.toggle("scrolled",window.scrollY>50);
+    window.addEventListener("scroll", () => {
+      document.getElementById("header").classList.toggle("scrolled", window.scrollY > 50);
     });
 
-    document.querySelector(".menu-toggle").onclick=()=>{
+    document.querySelector(".menu-toggle").onclick = () => {
       document.getElementById("nav-menu").classList.toggle("active");
     };
   </script>
