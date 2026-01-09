@@ -1,0 +1,73 @@
+<body>
+  <header id="header"> ... </header>
+
+  <div class="container" style="padding-top:120px;text-align:center;">
+    <h1 style="font-size:3.8rem;margin-bottom:60px;
+               background:linear-gradient(90deg,#333,#a8b5a2);
+               -webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+      Get in Touch
+    </h1>
+
+    <div class="contact-form">
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+      <p id="responseMsg"></p>
+    </div>
+
+    <!-- Contact Cards -->
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fab fa-whatsapp"></i>
+        <h3>WhatsApp</h3>
+        <p>Fastest way to order & ask anything</p>
+        <a href="https://wa.me/919994101930">Chat Now</a>
+      </div>
+      <div class="contact-card">
+        <i class="fab fa-instagram"></i>
+        <h3>Instagram</h3>
+        <p>DM us your screenshots & queries</p>
+        <a href="https://www.instagram.com/the_sachu_2005/">DM on Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script at the bottom -->
+  <script>
+    const form = document.getElementById("contactForm");
+    const responseMsg = document.getElementById("responseMsg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
+
+      try {
+        const res = await fetch("http://localhost:3000/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message }),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          responseMsg.textContent = "✅ Message sent successfully!";
+          responseMsg.style.color = "green";
+          form.reset();
+        } else {
+          responseMsg.textContent = "❌ " + (data.error || "Failed to send message");
+          responseMsg.style.color = "red";
+        }
+      } catch (err) {
+        responseMsg.textContent = "❌ Server error. Please try again later.";
+        responseMsg.style.color = "red";
+      }
+    });
+  </script>
+</body>

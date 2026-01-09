@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Urban Cart | Trendy Fashion For Every Mood</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --beige:#f9f5f0;
+      --cream:#fefaf7;
+      --peach:#ffe5d9;
+      --sage:#a8b5a2;
+      --text:#333;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:'Poppins',sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      line-height:1.7;
+      background-image:url("/images/bg.webp");
+      background-attachment:fixed;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+
+    body::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(249,245,240,0.94),rgba(255,229,217,0.84));
+      z-index:-2;
+    }
+
+    #particles-js{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      z-index:-1;
+    }
+
+    .container{
+      max-width:1280px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:1000;
+      padding:24px 0;
+      transition:.4s;
+    }
+
+    header.scrolled{
+      background:rgba(255,255,255,0.96);
+      backdrop-filter:blur(20px);
+      box-shadow:0 10px 30px rgba(0,0,0,0.1);
+      padding:16px 0;
+    }
+
+    .nav-container{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo{
+      font-size:2rem;
+      font-weight:700;
+      color:var(--sage);
+      text-decoration:none;
+    }
+
+    .nav-menu{
+      display:flex;
+      gap:40px;
+      list-style:none;
+    }
+
+    .nav-menu a{
+      color:var(--text);
+      text-decoration:none;
+      font-weight:500;
+      position:relative;
+    }
+
+    .nav-menu a::after{
+      content:'';
+      position:absolute;
+      bottom:-8px;
+      left:50%;
+      width:0;
+      height:2px;
+      background:var(--sage);
+      transition:.3s;
+    }
+
+    .nav-menu a:hover::after{
+      width:100%;
+      left:0;
+    }
+
+    .menu-toggle{
+      display:none;
+      background:none;
+      border:none;
+      font-size:1.9rem;
+      cursor:pointer;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding-top:80px;
+    }
+
+    .hero h1{
+      font-size:5.2rem;
+      font-weight:700;
+      letter-spacing:-3px;
+      background:linear-gradient(90deg,#222,var(--sage));
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      margin-bottom:20px;
+    }
+
+    .hero p{
+      font-size:1.3rem;
+      max-width:700px;
+      margin:0 auto 40px;
+      color:#555;
+    }
+
+    .btn{
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      padding:18px 42px;
+      margin:12px;
+      border-radius:50px;
+      font-weight:600;
+      transition:.4s;
+      min-width:240px;
+      text-decoration:none;
+    }
+
+    .btn-primary{
+      background:var(--sage);
+      color:white;
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-6px);
+    }
+
+    .btn-outline{
+      background:white;
+      color:var(--text);
+      border:2px solid #eee;
+    }
+
+    footer{
+      background:rgba(249,245,240,0.97);
+      padding:80px 20px 50px;
+      text-align:center;
+      color:#666;
+    }
+
+    @media(max-width:992px){
+      .menu-toggle{display:block;}
+      .nav-menu{
+        position:fixed;
+        top:0;
+        right:-100%;
+        width:80%;
+        height:100vh;
+        background:white;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        transition:.4s;
+      }
+      .nav-menu.active{right:0;}
+    }
+
+    @media(max-width:768px){
+      .hero h1{font-size:3.5rem;}
+      .btn{width:90%; max-width:340px;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="particles-js"></div>
+
+  <header id="header">
+    <div class="container nav-container">
+      <a href="/" class="logo">Urban Cart</a>
+      <button class="menu-toggle">☰</button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/shop.html">Shop</a></li>
+        <li><a href="/collections.html">Collections</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Trendy Fashion<br>For Every Mood</h1>
+      <p>Curated minimal aesthetic pieces that speak your vibe.</p>
+
+      <p id="backend-message">Connecting to server...</p>
+
+      <div>
+        <a href="https://wa.me/919876543210" class="btn btn-primary">WhatsApp Shop Now</a>
+        <a href="https://instagram.com/yourstore" class="btn btn-outline">Instagram DM</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Urban Cart • Made with love</p>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+  <!-- Backend Connection -->
+  <script>
+  fetch("/api/message")
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById("backend-message").innerText = data.message;
+    })
+    .catch(() => {
+      document.getElementById("backend-message").innerText = "Backend not connected";
+    });
+</script>
+
+
+    particlesJS("particles-js",{
+      particles:{
+        number:{value:80},
+        color:{value:["#a8b5a2","#ffe5d9"]},
+        size:{value:4},
+        move:{speed:0.7}
+      }
+    });
+
+    window.addEventListener("scroll",()=>{
+      document.getElementById("header").classList.toggle("scrolled",window.scrollY>50);
+    });
+
+    document.querySelector(".menu-toggle").onclick=()=>{
+      document.getElementById("nav-menu").classList.toggle("active");
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All | Urban Cart</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root{--beige:#f9f5f0;--cream:#fefaf7;--peach:#ffe5d9;--sage:#a8b5a2;--text:#333;}
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;
+         background-image:url("file:///C:/Users/ADMIN/IMG_20251124_004709_995.webp");
+         background-attachment:fixed;background-size:cover;background-position:center;position:relative;}
+    body::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,245,240,0.94),rgba(255,229,217,0.84));z-index:-2;}
+    #particles-js{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-1;}
+
+    header{position:fixed;top:0;width:100%;z-index:1000;padding:24px 0;transition:all .4s;background:transparent;}
+    header.scrolled{background:rgba(255,255,255,0.96);backdrop-filter:blur(20px);box-shadow:0 10px 30px rgba(0,0,0,0.1);padding:16px 0;}
+    .container{max-width:1280px;margin:0 auto;padding:0 20px;}
+    .nav-container{display:flex;justify-content:space-between;align-items:center;}
+    .logo{font-size:2rem;font-weight:700;color:var(--sage);text-decoration:none;letter-spacing:-1px;}
+    .nav-menu{display:flex;gap:40px;list-style:none;}
+    .nav-menu a{color:var(--text);text-decoration:none;font-weight:500;font-size:1.05rem;position:relative;transition:.3s;}
+    .nav-menu a::after{content:'';position:absolute;bottom:-8px;left:50%;width:0;height:2px;background:var(--sage);transition:.3s;}
+    .nav-menu a:hover{color:var(--sage);}
+    .nav-menu a:hover::after{width:100%;left:0;}
+    .menu-toggle{display:none;background:none;border:none;font-size:1.9rem;color:var(--text);cursor:pointer;}
+
+    .page-title{text-align:center;font-size:3.8rem;margin:140px 0 60px;
+                background:linear-gradient(90deg,#333,var(--sage));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:35px;padding:20px;}
+    .product{background:rgba(255,255,255,0.92);border-radius:32px;overflow:hidden;box-shadow:0 15px 40px rgba(0,0,0,0.1);transition:.5s;}
+    .product:hover{transform:translateY(-15px);box-shadow:0 30px 60px rgba(0,0,0,0.15);}
+    .product img{width:100%;height:380px;object-fit:cover;}
+    .info{padding:28px;text-align:center;}
+    .info h3{font-size:1.25rem;margin-bottom:8px;}
+    .price{font-size:1.9rem;color:var(--sage);font-weight:700;}
+    footer{background:rgba(249,245,240,0.97);padding:90px 20px 50px;text-align:center;color:#666;}
+
+    @media(max-width:992px){
+      .menu-toggle{display:block;}
+      .nav-menu{position:fixed;top:0;right:-100%;width:80%;max-width:360px;height:100vh;background:rgba(255,255,255,0.98);
+                backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:50px;
+                transition:right .4s;box-shadow:-10px 0 40px rgba(0,0,0,0.15);padding:40px 0;}
+      .nav-menu.active{right:0;}
+      .nav-menu a{font-size:1.7rem;font-weight:600;}
+    }
+    @media(max-width:768px){.page-title{font-size:2.8rem;margin:120px 0 40px;}}
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+
+  <header id="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">Urban Cart</a>
+      <nav>
+        <button class="menu-toggle" aria-label="Menu">Menu</button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="collections.html">Collections</a></li>
+          <li><a href="how-to-order.html">How to Order</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">Shop All Products</h1>
+<div class="products">
+
+  <!-- Example 1 – Real Meesho Product -->
+  <div class="product">
+    <picture>
+      <source srcset="https://i.imgur.com/AbCdEfG.avif" type="image/avif">
+      <img src="https://images.meesho.com/images/products/587727228/k6hnl_512.avif?width=512" alt="Floral Co-ord Set">
+    </picture>
+    <div class="info">
+      <h3>Trendy Floral Co-ord Set</h3>
+      <p class="price">₹599 <s>₹1299</s></p>
+    </div>
+  </div>
+
+  <!-- Example 2 – Another Real Meesho Product -->
+  <div class="product">
+    <img src="https://images.meesho.com/images/products/987654321/xyz_512.jpg" alt="Korean Oversized Shirt">
+    <div class="info">
+      <h3>Korean Style Oversized Shirt</h3>
+      <p class="price">₹449</p>
+    </div>
+  </div>
+
+  <!-- Example 3 – With Discount Badge -->
+  <div class="product">
+    <img src="https://images.meesho.com/images/products/555666777/def_512.jpg" alt="Cargo Pants">
+    <div class="info">
+      <h3>High Waist Cargo Pants</h3>
+      <p class="price">₹799 <span style="background:#ff006e;color:white;padding:4px 10px;border-radius:8px;font-size:0.8rem;">50% OFF</span></p>
+    </div>
+  </div>
+
+</div>
+    <div class="products">
+      <!-- Replace these file paths with your actual product images -->
+      <div class="product">
+        <picture>
+          <source srcset="D:/Products/k6hnl_512.avif" type="image/avif">
+            <img src="C:\Users\ADMIN\Downloads\Screenshot_26-11-2025_135344_www.meesho.com.jpeg" alt="Stylish tote bag displayed on a wooden table in a sunlit modern room with soft neutral colors, creating a calm and inviting atmosphere">
+        </picture>
+        <div class="info">
+          <h3>New Local AVIF Product</h3>
+          <p class="price">₹XXX</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <picture>
+          <source srcset="k6hnl_512.avif" type="image/avif">
+          <source srcset="file:///C:/Users/ADMIN/product3.webp" type="image/webp">
+          <img src="" alt="Minimal Tote">
+        </picture>
+        <div class="info">
+          <h3>Oversized Aesthetic Hoodie</h3>
+          <p class="price">₹799</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <picture>
+          <source srcset="file:///C:/Users/ADMIN/product2.avif" type="image/avif">
+          <source srcset="file:///C:/Users/ADMIN/product2.webp" type="image/webp">
+          <img src="file:///C:/Users/ADMIN/product2.jpg" alt="Korean Ribbed Crop Top">
+        </picture>
+        <div class="info">
+          <h3>Korean Ribbed Crop Top</h3>
+          <p class="price">₹449</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="file:///C:/Users/ADMIN/product3.jpg" alt="Tote Bag">
+        <div class="info">
+          <h3>Minimal Tote Bag</h3>
+          <p class="price">₹349</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="file:///C:/Users/ADMIN/product4.jpg" alt="Cargo Pants">
+        <div class="info">
+          <h3>Baggy Cargo Pants</h3>
+          <p class="price">₹999</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="file:///C:/Users/ADMIN/product5.jpg" alt="Graphic Tee">
+        <div class="info">
+          <h3>Printed Graphic Tee</h3>
+          <p class="price">₹499</p>
+        </div>
+      </div>
+
+      <div class="product">
+        <img src="file:///C:/Users/ADMIN/product6.jpg" alt="Denim Jacket">
+        <div class="info">
+          <h3>Oversized Denim Jacket</h3>
+          <p class="price">₹1,299</p>
+        </div>
+      </div>
+
+      <!-- Add as many as you want! -->
+    </div>
+  </div>
+
+  <footer><div class="container">© 2025 Urban Cart</div></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS("particles-js",{particles:{number:{value:window.innerWidth<768?50:100},color:{value:["#a8b5a2","#ffe5d9","#f9f5f0"]},
+      opacity:{value:0.5},size:{value:4},move:{speed:0.7}},interactivity:{events:{onhover:{enable:true,mode:"repulse"}}},retina_detect:true});
+    window.addEventListener("scroll",()=>document.getElementById("header").classList.toggle("scrolled",window.scrollY>50));
+    document.querySelector(".menu-toggle").onclick=()=>document.getElementById("nav-menu").classList.toggle("active");
+  </script>
+</body>
+</html>
