@@ -11,19 +11,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Debug: check if MONGO_URI is loaded
-if (!process.env.MONGO_URI) {
-  console.error("❌ MONGO_URI is not defined. Check your .env file.");
-  process.exit(1);
+// MongoDB connection is optional for local static storefront previews.
+if (process.env.MONGO_URI) {
+  mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Atlas connected"))
+    .catch(err => {
+      console.error("❌ MongoDB connection error:", err.message);
+    });
+} else {
+  console.warn("⚠️ MONGO_URI is not defined. App will run without MongoDB support.");
 }
-
-// MongoDB connection (Mongoose v7+ does not need extra options)
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB Atlas connected"))
-  .catch(err => {
-    console.error("❌ MongoDB connection error:", err.message);
-    process.exit(1);
-  });
 
 // Import Contact model
 const Contact = require("./models/Contact");
@@ -43,6 +40,10 @@ app.get("/api/message", (req, res) => {
 // Contact form submission (POST)
 app.post("/api/contact", async (req, res) => {
   try {
+    if (!process.env.MONGO_URI) {
+      return res.status(503).json({ error: "Database not configured yet. Please add MONGO_URI to enable form submissions." });
+    }
+
     const { name, email, message } = req.body;
     if (!name || !email || !message) {
       return res.status(400).json({ error: "All fields are required" });
@@ -73,7 +74,7 @@ app.get("/api/contacts", async (req, res) => {
   }
 });
 
-// Start server
+// Start servernode server.js
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);

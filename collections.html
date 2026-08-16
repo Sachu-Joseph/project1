@@ -11,7 +11,7 @@
     :root{--beige:#f9f5f0;--cream:#fefaf7;--peach:#ffe5d9;--sage:#a8b5a2;--text:#333;}
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;
-         background-image:url("file:///C:/Users/ADMIN/IMG_20251124_004709_995.webp");
+         background-image:linear-gradient(135deg, rgba(249,245,240,0.94), rgba(255,229,217,0.84)), url("https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1600&q=80");
          background-attachment:fixed;background-size:cover;background-position:center;position:relative;}
     body::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(249,245,240,0.94),rgba(255,229,217,0.84));z-index:-2;}
     #particles-js{position:fixed;width:100%;height:100%;top:0;left:0;z-index:-1;}
@@ -87,5 +87,30 @@
       <div class="col-card"><img src="https://images.unsplash.com/photo-1541099649105-f69e1b837a49?ixlib=rb-4.0.3&auto=format&fit=crop&q=80" alt=""><div class="overlay"><h3>Bottoms</h3></div></div>
     </div>
   </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    if (typeof particlesJS === "function") {
+      particlesJS("particles-js", {
+        particles: {
+          number: { value: 40 },
+          color: { value: ["#a8b5a2", "#ffe5d9"] },
+          opacity: { value: 0.5 },
+          size: { value: 3 },
+          move: { speed: 0.7 }
+        }
+      });
+    }
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+    if (menuToggle && navMenu) {
+      menuToggle.addEventListener("click", () => navMenu.classList.toggle("active"));
+    }
+
+    window.addEventListener("scroll", () => {
+      document.getElementById("header").classList.toggle("scrolled", window.scrollY > 50);
+    });
+  </script>
 </body>
 </html>
